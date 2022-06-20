@@ -38,7 +38,7 @@
 	}
 
 	.cursor :global(.typing::after) {
-		content: '▏';
+		content: var(--cursor-content);
 		display: inline-block;
 		color: var(--cursor-color);
 		animation: cursorFade 1.25s infinite;
@@ -56,6 +56,7 @@
         class:cursor
         class:delay={options.delay > 0}
         style:--cursor-color={typeof cursor === 'string' ? cursor : 'black'}
+        style:--cursor-content={typeof cursor === 'string' ? cursor : '▌'}
     >
         <slot />
     </div>
