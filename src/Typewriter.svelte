@@ -38,7 +38,7 @@
 	}
 
 	.cursor :global(.typing::after) {
-		content: '▌';
+		content: '▏';
 		display: inline-block;
 		color: var(--cursor-color);
 		animation: cursorFade 1.25s infinite;
