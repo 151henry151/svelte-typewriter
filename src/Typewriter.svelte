@@ -14,7 +14,7 @@
 
 	const dispatch = createEventDispatcher()
   
-    $: options = { interval, cascade, loop, loopRandom, scramble, scrambleSlowdown, cursor, delay, dispatch, unwriteInterval }
+    $: options = { interval, cascade, loop, loopRandom, scramble, scrambleSlowdown, cursor, cursorColor, cursorWidth delay, dispatch, unwriteInterval }
 </script>
 
 <style>
@@ -38,9 +38,11 @@
 	}
 
 	.cursor :global(.typing::after) {
-		content: var(--cursor-content);
+		content: '';
+		width: var(--cursorWidth, 1ch);
 		display: inline-block;
-		color: var(--cursor-color);
+		vertical-align: text-top;
+		background-color: var(--cursorColor);
 		animation: cursorFade 1.25s infinite;
 	}
 </style>
@@ -56,7 +58,6 @@
         class:cursor
         class:delay={options.delay > 0}
         style:--cursor-color={typeof cursor === 'string' ? cursor : 'black'}
-        style:--cursor-content={typeof cursor === 'string' ? cursor : '▌'}
     >
         <slot />
     </div>
